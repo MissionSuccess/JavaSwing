@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/edu/glut/jigsawgame/common=UTF-8
+encoding//src/edu/glut/jigsawgame/common/DatabaseCrud.java=UTF-8
+encoding//src/edu/glut/jigsawgame/common/JdbcProperties.java=UTF-8
+encoding/src=GBK
