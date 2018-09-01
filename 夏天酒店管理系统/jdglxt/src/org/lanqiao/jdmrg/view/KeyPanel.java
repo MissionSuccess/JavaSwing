@@ -1,0 +1,90 @@
+package org.lanqiao.jdmrg.view;
+
+import java.awt.Color;
+
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import org.lanqiao.jdmrg.common.Check;
+import org.lanqiao.jdmrg.common.RoomerAccount;
+/**
+ * 房卡激活（前台界面）
+ * 
+ * @author wzg
+ */
+@SuppressWarnings("serial")
+public class KeyPanel extends JPanel{
+	
+	public KeyPanel() {
+		this.setLayout(null);
+		this.setSize(840, 640);
+		this.setLocation(0, 0);
+		this.setBackground(Color.white);
+		JLabel a=new JLabel("房间号");
+		a.setFont(new Font("楷体",Font.BOLD,32));
+		a.setSize(195, 65);
+		a.setLocation(230, 180);
+		JLabel b=new JLabel("管理密码");
+		b.setFont(new Font("楷体",Font.BOLD,32));
+		b.setSize(195, 65);
+		b.setLocation(200, 270);
+		JTextField c=new JTextField();
+		c.setFont(new Font("楷体",Font.BOLD,32));
+		c.setSize(210, 48);
+		c.setLocation(360, 188);
+		JPasswordField d=new JPasswordField();
+//		d.setFont(new Font("楷体",Font.BOLD,32));
+		d.setSize(210, 48);
+		d.setLocation(360, 278);
+		JButton e = new JButton();
+		e.setFont(new Font("楷体",Font.BOLD,32));
+		e.setSize(200, 50);
+		e.setLocation(300, 400);
+		e.setIcon(new ImageIcon("src/images/确认.png"));
+		
+		this.add(a);
+		this.add(b);
+		this.add(c);
+		this.add(d);
+		this.add(e);
+	
+		e.addActionListener(new ActionListener() {
+			public void actionPerformed(final ActionEvent e) {
+				if(Check.checkroomnum(c.getText()) && "123456".equals(new String(d.getPassword()))) {
+					JOptionPane.showMessageDialog(null, "激活成功！", getName(), JOptionPane.INFORMATION_MESSAGE);
+					KeyPanel aKeyFrame=new KeyPanel();
+					CanvasFrame2.delePanelRight(aKeyFrame);
+					return;
+				}else {
+					JOptionPane.showMessageDialog(null, "激活失败,房间号或密码不正确!", getName(), JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			}
+		});
+		
+		}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Image img = null;
+		try {
+			img = new ImageIcon(RoomerAccount.bg).getImage();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, 840,640,null);
+		repaint();
+	}
+	}
