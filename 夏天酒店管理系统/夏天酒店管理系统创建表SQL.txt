@@ -1,0 +1,44 @@
+create table client (
+	accountNum varchar2(50), 
+	pwd varchar2(50),
+	nickname varchar2(50),
+	age number(5),
+	name varchar2(50),
+	id varchar2(50),
+	phoneNum varchar2(50)
+);
+
+create table front_desk (
+	accountNum varchar2(50),
+	password varchar2(50)
+);
+
+create table room (
+	roomNo varchar2(50),
+	roomType varchar2(50),
+	roomPrice number(10),
+	roomState varchar2(50)
+);
+
+create table roomer (
+	accountNum varchar2(50),
+	name varchar2(50),
+	contact varchar2(50),
+	roomNo varchar2(50),
+	roomType varchar2(50),
+	roomPrice varchar2(50),
+	firstTime varchar2(50),
+	lastTime varchar2(50),
+	dayNum number(10),
+	intime varchar2(50),
+	id varchar2(50),
+	roomerState varchar2(50)
+);
+
+create table roomerview (
+	roomNo varchar2(50),
+	roomType varchar2(50),
+	roomPrice number(10),
+	roomState varchar2(50)
+);
+
